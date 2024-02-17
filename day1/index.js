@@ -1,4 +1,4 @@
-const { error } = require('console');
+const { error, Console } = require('console');
 const fs = require('fs');
 //Blocking , synchrnous was , mean one code has to wait untill another is excuded
 // const show = fs.readFileSync('./node-farm/read.text', 'utf-8');
@@ -14,6 +14,11 @@ fs.readFile('./node-farm/sync.text','utf-8',(error,data) =>{
         //dats2 is computure read.text file data
         console.log(data2)
         // behaviour of asynchronous non blocking code 
+        fs.readFile(`./node-farm/empty.text`,'utf-8', (error, data3)=>{
+            console.log(data3)
+            fs.writeFileSync(`./node-farm/append.text`,`${data2}\n${data3}`,'utf-8', err =>{
+            })
+        })
     });
     
 });
